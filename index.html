@@ -1,0 +1,68 @@
+<script src="node_modules/d3/d3.min.js"></script>
+<script src="node_modules/topojson/build/topojson.js"></script>
+<script src="node_modules/datamaps/dist/datamaps.ecu.js"></script>
+<div id="container" ></div>
+<style>
+*{box-sizing: border-box;}
+#container{
+  height:100vh ;
+  width:100vw ;
+  position: relative;
+  
+}
+</style>
+<script>
+    var map = new Datamap({
+        element: document.getElementById('container'),
+
+        dataType: 'json', 
+         geographyConfig: {
+				popupOnHover: true,
+                highlightOnHover: true,
+                borderColor: '#444',
+                borderWidth: 0.5,
+            dataUrl: 'https://raw.githubusercontent.com/HERDTEC/librerias/master/ecuador.topo.json'
+        },
+		
+		scope: 'ecuador',
+		setProjection: function (element) {
+                var projection = d3.geo.mercator()
+                    .center([-90, 2.467834]) // always in [East Latitude, North Longitude]
+					//-0.180653, -78.467834.
+                    .scale(3000)
+					 .translate([element.offsetWidth / 6, element.offsetHeight / 6]);
+                var path = d3.geo.path().projection(projection);
+                return { path: path, projection: projection };
+            }
+    });
+	/*
+	var bubble_map = new Datamap({
+            element: document.getElementById('india'),
+            scope: 'india',
+            geographyConfig: {
+                popupOnHover: true,
+                highlightOnHover: true,
+                borderColor: '#444',
+                borderWidth: 0.5,
+                dataUrl: 'https://rawgit.com/Anujarya300/bubble_maps/master/data/geography-data/india.topo.json'
+                //dataJson: topoJsonData
+            },
+            fills: {
+                'MAJOR': '#306596',
+                'MEDIUM': '#0fa0fa',
+                'MINOR': '#bada55',
+                defaultFill: '#dddddd'
+            },
+            data: {
+                'JH': { fillKey: 'MINOR' },
+                'MH': { fillKey: 'MINOR' }
+            },
+            setProjection: function (element) {
+                var projection = d3.geo.mercator()
+                    .center([ 77.0000000, 20.0000000]) // always in [East Latitude, North Longitude]
+                    .scale(100);
+                var path = d3.geo.path().projection(projection);
+                return { path: path, projection: projection };
+            }
+});*/
+</script>
