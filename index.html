@@ -23,7 +23,12 @@
                 borderWidth: 0.5,
             dataUrl: 'https://raw.githubusercontent.com/HERDTEC/librerias/master/ecuadorsr.topo'
         },
-		
+		fills: {
+                'MAJOR': '#306596',
+                'MEDIUM': '#0fa0fa',
+                'MINOR': '#bada55',
+                defaultFill: '#dddddd'
+            },
 		scope: 'ecuador',
 		setProjection: function (element) {
                 var projection = d3.geo.mercator()
