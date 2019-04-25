@@ -9,7 +9,7 @@
   width:100vw ;
   position: relative;
   
-}
+}|
 </style>
 <script>
     var map = new Datamap({
@@ -28,6 +28,10 @@
                 'MEDIUM': '#0fa0fa',
                 'MINOR': '#bada55',
                 defaultFill: '#dddddd'
+            },
+			 data: {
+                'CB': { fillKey: 'MINOR' },
+                'LR': { fillKey: 'MINOR' }
             },
 		scope: 'ecuador',
 		setProjection: function (element) {
